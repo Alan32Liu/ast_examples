@@ -12,6 +12,9 @@ all: clean_ast main.c headers/utility.h headers/math/math_functions.h
 all-json: clean_json main.c headers/utility.h headers/math/math_functions.h
 	$(CC) -Xclang -ast-dump-all=json -fsyntax-only main.c > main.c.all.json
 
+tags:
+	ctags -n --fields=+iSst -R .
+
 clean_ast:
 	find . -name "*.ast" -type f -delete
 
