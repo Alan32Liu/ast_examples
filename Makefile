@@ -1,19 +1,24 @@
 CC=clang
 
-default: clean main.c headers/utility.h headers/math/math_functions.h
+default: clean_ast main.c headers/utility.h headers/math/math_functions.h
 	$(CC) -Xclang -ast-dump -fsyntax-only main.c > main.c.ast
 
-json: clean main.c headers/utility.h headers/math/math_functions.h
+json: clean_json main.c headers/utility.h headers/math/math_functions.h
 	$(CC) -Xclang -ast-dump=json -fsyntax-only main.c > main.c.json
 
-all: clean main.c headers/utility.h headers/math/math_functions.h
-        $(CC) -Xclang -ast-dump-all -fsyntax-only main.c > main.c.all.ast
+all: clean_ast main.c headers/utility.h headers/math/math_functions.h
+	$(CC) -Xclang -ast-dump-all -fsyntax-only main.c > main.c.all.ast
 
-all-json: clean main.c headers/utility.h headers/math/math_functions.h
-         $(CC) -Xclang -ast-dump-all=json -fsyntax-only main.c > main.c.all.json
+all-json: clean_json main.c headers/utility.h headers/math/math_functions.h
+	$(CC) -Xclang -ast-dump-all=json -fsyntax-only main.c > main.c.all.json
 
-clean:
-	rm -f **/*.ast
+clean_ast:
+	find . -name "*.ast" -type f -delete
+
+clean_json:
+	find . -name "*.json" -type f -delete
+
+clean: clean_ast clean_json
 
 .PHONY: clean
 
