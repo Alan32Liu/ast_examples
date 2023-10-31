@@ -1,3 +1,3 @@
-int rand_int() {
-    return 2;
+int rand(int a, int b){
+    return a - b;
 }
