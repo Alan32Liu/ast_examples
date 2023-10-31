@@ -11,6 +11,6 @@ int main() {
     // Then check if minus defines 'file' explicitly.
     FractionType* f = NULL;
     set_fraction(f);
-    //validate_fraction(*f);
+    //validate_fraction(*f); 
 	return add(1,2) + minus(2,1);
 }
