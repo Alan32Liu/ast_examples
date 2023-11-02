@@ -10,7 +10,8 @@ RUN apt-get update && \
     clang-15 \
     universal-ctags \
     less \
-    make
+    make \
+    check
 
 RUN ln -s '/usr/bin/clang-15' '/usr/bin/clang' && \
     ln -s '/usr/bin/clang++-15' '/usr/bin/clang++'
